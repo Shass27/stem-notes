@@ -1,0 +1,77 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+
+% textbook-style headings
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}[\vspace{-0.3em}\rule{\linewidth}{0.5pt}]
+\titlespacing*{\section}{0pt}{1.4em}{0.8em}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.5em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small %% TODO: subject -- Summary Notes
+}
+\fancyhead[R]{\small\nouppercase{\leftmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% key-idea box
+\newtcolorbox{keyidea}{enhanced,breakable,colback=gray!8,colframe=gray!55,boxrule=0.5pt,arc=1pt,
+  title={\textbf{Key idea}},coltitle=black,colbacktitle=gray!22,fonttitle=\small,
+  left=6pt,right=6pt,top=3pt,bottom=3pt,before skip=8pt,after skip=8pt}
+% worked-example box
+\newtcolorbox{example}[1]{enhanced,breakable,colback=white,colframe=black!55,boxrule=0.5pt,arc=0pt,
+  title={\textbf{Example}\hfill\textsf{\small #1}},coltitle=black,colbacktitle=gray!12,fonttitle=\small,
+  left=6pt,right=6pt,top=3pt,bottom=3pt,before skip=8pt,after skip=8pt}
+% one-line definitions list
+\newenvironment{defs}{\begin{description}[nosep,leftmargin=0pt,labelsep=0.4em,font=\bfseries,itemsep=2pt]}{\end{description}}
+
+\setlist{nosep,leftmargin=1.4em}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries %% TODO: title
+Summary Notes}\\[3pt]
+{\small %% TODO: sources summarised
+Based on the course material}
+\end{center}
+
+%------------------------------------------------------------
+\section{%% TODO: lecture/chapter title
+Topic \hfill{\normalsize\sffamily L1}}
+
+%% TODO: short prose overview of the lecture
+Overview paragraph.
+
+\subsection*{Definitions}
+\begin{defs}
+\item[Term:] one-line definition. %% TODO
+\end{defs}
+
+\subsection*{Key equations}
+\begin{equation}
+\tau=\mu\frac{du}{dy}\qquad\text{(L1 s9)} %% TODO
+\end{equation}
+
+\begin{keyidea}
+%% TODO: the one thing to remember from this section
+Main takeaway.
+\end{keyidea}
+
+\begin{example}{%% TODO: source tag
+L1 s15}
+%% TODO: short worked example
+Worked example.
+\end{example}
+
+\end{document}

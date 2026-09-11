@@ -1,0 +1,93 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,patterns}
+\usepackage[most]{tcolorbox}
+
+% textbook-style headings
+\titleformat{\section}{\Large\bfseries}{}{0em}{}[\vspace{-0.3em}\rule{\linewidth}{0.5pt}]
+\titlespacing*{\section}{0pt}{1.4em}{0.8em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small %% TODO: subject -- source name
+}
+\fancyhead[R]{\small %% TODO: topic
+}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% question box: #1 = problem number, #2 = source tag
+\newtcolorbox{question}[2]{enhanced,breakable,colback=gray!8,colframe=gray!55,boxrule=0.5pt,arc=1pt,
+  title={\textbf{Problem #1}\hfill\textsf{\small #2}},coltitle=black,colbacktitle=gray!22,fonttitle=\normalsize,
+  left=6pt,right=6pt,top=4pt,bottom=4pt,before skip=10pt,after skip=6pt}
+% final-answer box
+\newtcolorbox{answer}{enhanced,colback=white,colframe=black!65,boxrule=0.6pt,arc=0pt,
+  left=6pt,right=6pt,top=3pt,bottom=3pt,before skip=6pt,after skip=12pt,
+  title={\textbf{Answer}},coltitle=black,colbacktitle=gray!12,fonttitle=\small,attach title to upper={\quad}}
+% step heading (Given / Assumptions / Solution / Key idea)
+\newcommand{\hd}[1]{\par\smallskip\noindent\textbf{#1.}\ }
+
+\newcommand{\vol}{\mathcal{V}}
+\setlist{nosep,leftmargin=1.4em}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries %% TODO: title
+Solutions}\\[3pt]
+{\small %% TODO: subtitle / topics
+Topics covered}
+\end{center}
+
+\noindent %% TODO: scope statement
+Each problem is restated in full, tagged with its source and page, and solved as Given $\rightarrow$ Assumptions $\rightarrow$ Solution $\rightarrow$ boxed answer. Standard values: $g=9.81$~m/s$^2$, $\rho_{water}=1000$~kg/m$^3$.
+
+\medskip
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}clllX@{}}
+\toprule
+\textbf{No.} & \textbf{Source} & \textbf{Page} & \textbf{Status} & \textbf{Topic}\\ \midrule
+1 & %% TODO
+file.pdf & 3 & unsolved & topic\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% remove this line when solving all problems
+\noindent{\footnotesize\textbf{Skipped (already fully solved in the source):} %% TODO
+}
+
+%============================================================
+\section{%% TODO: group heading
+Group}
+
+\begin{question}{1}{%% TODO: Source $\cdot$ Page N
+Source $\cdot$ Page 1}
+%% TODO: full problem statement, including figure data in words
+\end{question}
+
+\hd{Given} %% TODO
+
+\hd{Assumptions} %% TODO
+
+\hd{Solution}
+%% TODO: symbolic derivation first, then numbers with units
+\[
+F=ma
+\]
+
+\begin{answer}
+$\boxed{F=10\ \text{N}}$
+\end{answer}
+
+\end{document}

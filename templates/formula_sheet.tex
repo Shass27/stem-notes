@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=1.6cm,top=1.5cm,bottom=1.6cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{xltabular,booktabs,array}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+% vertically centre all table cells (X columns too)
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+\renewcommand{\arraystretch}{1.45}
+\setlength{\tabcolsep}{4pt}
+
+% compact textbook-style headings
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}[\vspace{-0.4em}\rule{\linewidth}{0.4pt}]
+\titlespacing*{\section}{0pt}{1.1em}{0.5em}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{0.7em}{0.3em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small %% TODO: subject -- Formulas \& Definitions
+}
+\fancyhead[R]{\small %% TODO: scope, e.g. Lectures 1--10
+}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% row: quantity | formula (grey cell) | units | source reference
+\newcommand{\F}[4]{#1 & \cellcolor{gray!12}$\displaystyle #2$ & #3 & {\footnotesize\sffamily #4}\\}
+% table header repeated on every page
+\newcommand{\FH}{\toprule \textbf{Quantity} & \textbf{Formula} & \textbf{Units} & \textbf{Ref.}\\ \midrule \endhead \bottomrule \endfoot}
+% one-line definitions list
+\newenvironment{defs}{\begin{description}[nosep,leftmargin=0pt,labelsep=0.4em,font=\bfseries,itemsep=1pt]}{\end{description}}
+
+\newcommand{\vol}{\mathcal{V}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries %% TODO: title
+Subject: Formulas \& Definitions}\\[2pt]
+{\small %% TODO: compiled from ...
+Compiled from the course material}
+\end{center}
+
+% source key: one short tag per file
+\noindent\textbf{Reference key.}\ \textsf{L1} = %% TODO: file name
+\quad ``\textsf{s12}'' = slide 12 of that file.
+
+%------------------------------------------------------------
+\section*{Nomenclature}
+{\small
+\begin{xltabular}{\linewidth}{@{}L{1.3cm}XL{2.1cm}|L{1.3cm}XL{2.1cm}@{}}
+\toprule
+\textbf{Sym.} & \textbf{Meaning} & \textbf{SI unit} & \textbf{Sym.} & \textbf{Meaning} & \textbf{SI unit}\\ \midrule
+$\rho$ & density & kg/m$^3$ & $\mu$ & dynamic viscosity & Pa$\cdot$s\\
+%% TODO: more symbols
+\bottomrule
+\end{xltabular}
+}
+
+%------------------------------------------------------------
+\section{%% TODO: topic
+Topic \hfill{\normalsize\sffamily L1}}
+
+\begin{defs}
+\item[Term:] one-line definition. %% TODO
+\end{defs}
+
+\begin{xltabular}{\linewidth}{@{}L{3.5cm}XL{2.1cm}L{1.2cm}@{}}
+\FH
+\F{Density}{\rho=\frac{m}{\vol}}{kg/m$^3$}{L1 s3}
+\F{}{\text{continuation row (empty quantity)}}{}{L1 s3}
+%% TODO: more rows
+\end{xltabular}
+
+\end{document}
