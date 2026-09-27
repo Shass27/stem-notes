@@ -4,8 +4,9 @@ Check with `which pdfinfo pdftotext pdftoppm soffice tectonic pdflatex latexmk p
 
 | Tool | Used for | Install (macOS / Homebrew) | Disk |
 |---|---|---|---|
-| poppler (`pdfinfo`, `pdftotext`, `pdftoppm`) | page counts, text extraction, rendering PDF pages as images (the Read tool needs `pdftoppm`) | `brew install poppler` | ~35 MB |
+| poppler (`pdfinfo`, `pdftotext`, `pdftoppm`, `pdfimages`) | page counts, text extraction, rendering PDF pages as images (the Read tool needs `pdftoppm`), extracting embedded figures (`pdfimages`) | `brew install poppler` | ~35 MB |
 | LibreOffice (`soffice`) | converting .pptx/.docx to PDF (only when Office files are present) | `brew install --cask libreoffice` | ~700 MB |
+| book-to-skill | building a reusable knowledge skill from a whole book (only when the book route is chosen) | `git clone https://github.com/virgiliojr94/book-to-skill ~/.claude/skills/book-to-skill` or `npx skills add virgiliojr94/book-to-skill` | small (+ its own optional extractor deps, see its docs) |
 | tectonic | compiling LaTeX; downloads packages on demand | `brew install tectonic` | ~20 MB + 100–300 MB package cache |
 | BasicTeX | minimal pdflatex | `brew install --cask basictex` | ~300 MB |
 | MacTeX | full TeX distribution | `brew install --cask mactex` | 5–7 GB |
@@ -22,6 +23,10 @@ wc -w "$SCRATCH/file.txt"                               # < ~50 words/page -> sc
 soffice --headless --convert-to pdf --outdir "$SCRATCH" "deck.pptx"   # Office -> PDF
 tectonic -X compile file.tex                            # compile (tectonic)
 latexmk -pdf file.tex                                   # compile (MacTeX/BasicTeX)
+
+pdfimages -list file.pdf                                # list embedded images per page
+pdfimages -png -f N -l N file.pdf "$OUT/figures/pN"     # extract embedded raster figures
+pdftoppm -png -r 200 -f N -l N -x X -y Y -W W -H H -singlefile file.pdf "$OUT/figures/pN-fig1"  # render+crop a region (vector diagrams)
 ```
 
 ## Reading pages
