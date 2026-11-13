@@ -1,6 +1,6 @@
 ---
 name: stem-notes
-description: Supplementary notes generation for STEM. Turns lecture slides, textbook chapters, scanned problem sheets, images (png/jpg) or PowerPoint/Word files into LaTeX formula/definition sheets, fully worked problem solutions, and summary notes, extracting figures from PDFs to embed and, for whole books, building a reusable knowledge skill first. Use when the user asks for notes, a formula sheet, cheat sheet, worked solutions or revision material from reference/source files.
+description: Supplementary notes generation for STEM. Turns lecture slides, textbook chapters, scanned problem sheets, images (png/jpg) or PowerPoint/Word files into LaTeX formula/definition sheets, fully worked problem solutions, summary notes, and dense equation-chained exam revision handbooks (2-column A4, yellow key-result boxes, numbered equations with parent references, built with tectonic), extracting figures from PDFs to embed and, for whole books, building a reusable knowledge skill first. Use when the user asks for notes, a formula sheet, cheat sheet, worked solutions, a revision handbook or revision material from reference/source files, including "make a revision handbook for these chapters" or "compile my lecture PDFs into a 2-page sheet".
 ---
 
 # STEM supplementary notes (LaTeX)
@@ -16,6 +16,7 @@ Supporting files (read them when you reach the matching step):
 - `references/tooling.md`: software, install commands and sizes, conversion commands
 - `references/questions.md`: the MCQ question bank (intake rounds, including the compile question)
 - `references/style-guide.md`: layout, labelling, solution format, verification and discrepancy rules
+- `references/handbook.md`: the full revision-handbook route (with `handbook-inventory-prompt.md`, `handbook-fragment-prompt.md`, `handbook-pitfalls.md`, `templates/handbook_preamble.tex`, `scripts/build_handbook.sh`)
 - `templates/formula_sheet.tex`, `templates/solutions.tex`, `templates/summary_notes.tex`: preambles to copy
 
 ## Workflow
@@ -31,6 +32,9 @@ Run `which pdfinfo pdftotext pdftoppm soffice tectonic pdflatex`. Anything missi
 
 ### 3. Intake MCQs
 Ask the rounds in `references/questions.md`, at most 4 questions per AskUserQuestion call. Put the recommended option first and mark it "(Recommended)". Only ask the question groups for the outputs the user selected. The **compile question is always asked, last**. Read the answers literally: free-text answers override the options.
+
+### 3b. Revision handbook route (only if chosen in round 1)
+If the user picked **Revision handbook**, follow `references/handbook.md` from its Step 0 for that output (its own MCQs replace rounds 2-4 for it). It always compiles with tectonic, so for a handbook-only request skip the compile question. Every `\key` result box gets a "where" line defining each symbol, plus the full matrix of any tensor in it.
 
 ### 4. Book route (only if chosen in round 1)
 - Install the book skill only on an explicit MCQ answer (see `references/questions.md`); free-text names/paths override the default and get written to the Settings line above.

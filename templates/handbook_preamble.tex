@@ -1,0 +1,24 @@
+\documentclass[8pt,a4paper]{extarticle}
+\usepackage[margin=0.7cm,top=0.6cm,bottom=0.6cm]{geometry}
+\usepackage{amsmath}
+\usepackage{newtxtext,newtxmath}
+\usepackage{multicol,tikz,xcolor,needspace}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.8pt}
+\setlength{\columnsep}{0.45cm}\setlength{\columnseprule}{0.2pt}
+\setlength{\abovedisplayskip}{1pt}\setlength{\belowdisplayskip}{1pt}
+\setlength{\abovedisplayshortskip}{0pt}\setlength{\belowdisplayshortskip}{0pt}
+\setlength{\jot}{0pt}
+\renewcommand{\arraystretch}{1}
+% shortcuts
+\newcommand{\V}{\vec V}\newcommand{\n}{\hat n}\newcommand{\md}{\dot m}
+\newcommand{\vr}{\vec V_r}\newcommand{\Wd}{\dot W}\newcommand{\Qd}{\dot Q}
+\newcommand{\nt}[1]{\ifmmode\text{\color{gray!60!black}\scriptsize[#1]}\else{\color{gray!60!black}\scriptsize[#1]}\fi}
+\newcommand{\hd}[1]{\par\Needspace{4\baselineskip}\vspace{0.5pt}\noindent\colorbox{blue!14}{\parbox{\dimexpr\linewidth-2\fboxsep}{\bfseries\small #1}}\par\vspace{0.5pt}}
+\newcommand{\key}[1]{\fcolorbox{black}{yellow!22}{\boldmath$\displaystyle #1$}}
+% ---- Ch-block macros (keep identical across handbooks) ----
+% \hd{...}: blue section bar. Needspace keeps it from orphaning at a column bottom.
+% Do NOT use \Needspace inside a multicols block that spans pages (causes blank pages); see references/handbook-pitfalls.md.
+\newenvironment{bl}{\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\leftmargin}{1em}}{\end{itemize}}
+\begin{document}

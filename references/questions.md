@@ -17,6 +17,7 @@ Use AskUserQuestion with at most 4 questions per call. Put the recommended optio
    - Formula / definition sheet
    - Problem-set solutions
    - Summary notes
+   - Revision handbook (dense 2-column exam handbook; follows `references/handbook.md`)
 5. **Output location**: "`latex/` subfolder (Recommended)" / "Same folder as the sources" / other.
 6. **Visual style**: "Clean textbook (Recommended): Latin Modern, black and white, light-grey boxes" / "Coloured accents (coloured headings, tcolorbox)" / "Minimal plain article".
 7. **Figures** (only if any source has extractable figures): "What should I do with figures in the sources?"
