@@ -1,9 +1,9 @@
 # stem-notes
 
 A Claude Code skill that turns STEM source material (lecture slides, textbook
-chapters, scanned problem sheets, images, PowerPoint/Word files) into LaTeX
-study documents: formula/definition sheets, fully worked problem solutions,
-and summary notes.
+chapters, scanned problem sheets, handwritten notes, images, PowerPoint/Word
+files) into LaTeX study documents: formula/definition sheets, fully worked
+problem solutions, summary notes, and dense exam revision handbooks.
 
 ## How it works
 
@@ -41,6 +41,14 @@ The user is driven through the whole process with multiple-choice questions
 - `templates/formula_sheet.tex` — formula/definition sheet preamble.
 - `templates/solutions.tex` — worked-solutions preamble.
 - `templates/summary_notes.tex` — summary-notes preamble.
+- `references/handbook.md` — the revision-handbook route, step by step.
+- `references/handbook-inventory-prompt.md`, `handbook-fragment-prompt.md` —
+  subagent briefs for reading decks and drafting handbook sections.
+- `references/handbook-pitfalls.md` — LaTeX/layout problems already hit once.
+- `templates/handbook_preamble.tex` — handbook preamble (Times, 8pt, A4,
+  `\hd`, `\key`, `\nt`, `bl`).
+- `scripts/build_handbook.sh` — two-pass tectonic build, warning report, page
+  count and PNG render for visual QA.
 
 ## Workflows
 
@@ -73,6 +81,17 @@ git clone https://github.com/virgiliojr94/book-to-skill ~/.claude/skills/book-to
 If you already have that book skill installed under a different name, or
 prefer a different converter skill entirely, stem-notes asks and remembers
 your choice in the `Book skill:` line of `SKILL.md`.
+
+**Revision handbook**: pick "Revision handbook" in the outputs question to
+get a dense, equation-chained exam handbook (2 columns, A4, 8pt Times). Each
+deck is inventoried by a parallel subagent (pages read as images, so
+handwritten or image-only decks work), a derivation tree and page split are
+agreed with you, sections are drafted in parallel and merged, then built with
+`scripts/build_handbook.sh`. Every key result sits in a yellow box with a
+"where" line defining each symbol and the full matrix of any tensor, every
+equation names its parent, slip-ups in the source are fixed and listed, and a
+coverage check ticks every inventoried formula before delivery. This was
+previously a separate `lecture-handbook` skill.
 
 **Figures**: extracted PDF figures land in `latex/figures/` with a
 `figures.md` index. You can ask later, e.g. "add figure p12-1 to the summary
